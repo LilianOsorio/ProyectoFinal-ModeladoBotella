@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pipeline 3D - Botella de Agua</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #12141a;
+      color: #f0f2f5;
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      margin: 0;
+    }
+    canvas {
+      background: #0b0d12;
+      border: 1px solid #2d3343;
+      border-radius: 8px;
+    }
+    .panel {
+      width: 310px;
+      background: #1a1e29;
+      padding: 16px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    label { display: flex; flex-direction: column; font-size: 0.9rem; gap: 4px; }
+    .row { display: flex; align-items: center; gap: 8px; }
+    h3 { margin: 4px 0; font-size: 1rem; color: #7dd3fc; }
+  </style>
+</head>
+<body>
+  <canvas id="lienzo" width="750" height="600"></canvas>
+
+  <div class="panel">
+    <h3>Modelo 3D (.OBJ)</h3>
+    <input type="file" id="objInput" accept=".obj" />
+
+    <h3>Tipos de Iluminación</h3>
+    <label class="row"><input type="checkbox" id="chkAmb" checked /> 1. Luz Ambiental</label>
+    <label class="row"><input type="checkbox" id="chkDif" checked /> 2. Luz Difusa (Lambert)</label>
+    <label class="row"><input type="checkbox" id="chkEsp" checked /> 3. Luz Especular (Phong)</label>
+
+    <h3>Parámetros de Luz Ambiental</h3>
+    <label>Intensidad Ambiental (Ia):
+      <input type="range" id="iaSlider" min="0" max="1" step="0.05" value="0.25" />
+    </label>
+    <label>Color Luz Ambiental:
+      <input type="color" id="ambColor" value="#88ccff" />
+    </label>
+
+    <h3>Posición Luz Principal y Movimiento</h3>
+    <label>Luz X: <input type="range" id="lightX" min="-5" max="5" step="0.2" value="2.5" /></label>
+    <label>Luz Y: <input type="range" id="lightY" min="-5" max="5" step="0.2" value="3.0" /></label>
+    <label class="row"><input type="checkbox" id="chkAnim" checked /> Animar movimiento botella</label>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
